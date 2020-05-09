@@ -5,7 +5,10 @@ import { v4 as uuid } from 'uuid';
 
 import { AppState } from './store/models/app-state.model';
 import { ShoppingItem } from './store/models/shopping-item.model';
-import { AddItemAction } from './store/actions/shopping.actions';
+import {
+  AddItemAction,
+  DeleteItemAction,
+} from './store/actions/shopping.actions';
 
 @Component({
   selector: 'app-root',
@@ -29,5 +32,9 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new AddItemAction(this.newShoppingItem));
 
     this.newShoppingItem = { id: '', name: '' };
+  }
+
+  deleteItem(id: string) {
+    this.store.dispatch(new DeleteItemAction(id));
   }
 }
